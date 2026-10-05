@@ -22,11 +22,6 @@ If you open this project in Gitpod, you'll get all Node dependencies pre-install
 ### App Name
 GreenStreetsBerlin
 
-### Team
-- Oliver Bischoff (594250)
-- Linh Dan Nguyen (594557)
-
-
 ### Beschreibung
 App zur Dokumentation von Standorten in Berlin:
 - die nicht Nachhaltig sind
