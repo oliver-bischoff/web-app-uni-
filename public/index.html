@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script src="./js/script2.js" type="module" defer></script>
+    <title>Green Streets Berlin</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Green Streets Berlin</h1>
+        <button class="logout">Logout</button>
+    </header>
+
+    <section id="login-screen">
+        <form id="loginForm" class="loginform">
+            <label class="username" for="username"><strong>Username</strong></label>
+            <input type="text" id="username" name="username" required><br><br>
+            <label class="password" for="password"><strong>Password</strong></label>&nbsp;
+            <input type="password" id="password" name="password" required><br><br>
+            <button class="login" type="submit">Login</button>
+        </form>
+    </section>
+
+
+    <!-- Main Screen: Green Streets Berlin -->
+    <section id="main-screen" style="display:none;">
+        <p class="welcome">Willkommen, <strong id="welcome-name"></strong>!</p>
+
+        <!-- Locations and Map -->
+        <div id="main-layout">
+            <div id="list-container">
+                <ul class="locations" id="locations-list"> </ul>
+            </div>
+
+            <div id="map"></div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="actions">
+            <button class="add" type="button">Neue Location hinzufügen</button>
+        </div>
+    </section>
+
+    <!-- Add Screen -->
+    <section id="add-screen" style="display:none;">
+        <h2>Neuen Standort hinzufügen</h2>
+
+        <form id="add-form" class="addform">
+            <!-- Titel -->
+            <label for="title">Titel <span>*</span></label><br>
+            <input type="text" id="title" name="title" required><br><br>
+
+            <!-- Beschreibung -->
+            <label for="description">Beschreibung des Standorts</label><br>
+            <textarea id="description" name="description" rows="4" cols="40"></textarea><br><br>
+
+            <!-- Straße & Hausnummer -->
+            <label for="street">Straße & Hausnummer <span>*</span></label><br>
+            <input type="text" id="street" name="street" required><br><br>
+
+            <!-- PLZ + Stadt -->
+            <label for="city">PLZ & Stadt <span>*</span></label><br>
+            <input type="text" id="city" name="city" required><br><br>
+
+            <!-- Kategorie -->
+            <label for="category">Kategorie <span>*</span></label><br>
+            <input type="text" id="category" name="category" required><br><br>
+
+            <!-- Bild hochladen -->
+            <label for="image">Bild hochladen:</label><br>
+            <input type="file" id="image" name="image" accept="image/*"><br><br>
+
+            <!-- Buttons -->
+            <div class="moreactions">
+                <button class="speichern" type="submit">Speichern</button>
+                <button class="abbrechen" type="reset">Abbrechen</button>
+                <button class="schließen" type="button">Schließen</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Details Screen -->
+    <section id="details-screen" style="display:none;">
+        <h2>Standort aktualisieren oder löschen</h2>
+
+        <form id="update-delete-form" class="detailsform">
+            <!-- Titel -->
+            <label for="title_details">Titel <span>*</span></label><br>
+            <input class="detailstitle" type="text" id="title_details" name="title"
+                value="Überlappen von Fußgänger- und Fahrradweg" required><br><br>
+
+            <!-- Beschreibung -->
+            <label for="description_details">Beschreibung des Standorts</label><br>
+            <textarea id="description_details" name="description" rows="4" cols="40"></textarea><br><br>
+
+            <!-- Straße & Hausnummer -->
+            <label for="street_details">Straße & Hausnummer <span>*</span></label><br>
+            <input type="text" id="street_details" name="street" value="Zingster Straße" required><br><br>
+
+            <!-- PLZ + Stadt -->
+            <label for="city_details">PLZ & Stadt <span>*</span></label><br>
+            <input type="text" id="city_details" name="city" value="13051, Berlin" required><br><br>
+
+            <!-- Kategorie -->
+            <label for="category_details">Kategorie <span>*</span></label><br>
+            <input type="text" id="category_details" name="category" value="Fahrrad, Fußgänger" required><br><br>
+
+            <!-- Bild -->
+            <label for="image_details_input">Bild hochladen / ersetzen</label><br>
+            <input class="bild-auswählen" type="file" id="image_details_input" name="image" accept="image/*"><br><br>
+
+            <!-- aktuelles Bild anzeigen -->
+            <img src="" alt="aktuelles Bild" id="image_details_preview" width="300"><br><br>
+
+            <!-- Bild löschen -->
+            <button class="bild-löschen" type="button" id="delete-image">Bild löschen</button>
+
+            <!-- Geokoordinaten in Dezimal-->
+            <label for="geocoodinate">Breiten- und Längegrad</label><br>
+            <input type="text" id="geocoodinate" name="geocoordinate" value="" readonly><br><br>
+
+            <!--
+            <label for="geocoodinate_length">Längengrad</label><br>
+            <input type="text" id="geocoodinate_length" name="geocoordinate_width" value="" readonly><br><br>
+            -->
+            <!-- Buttons -->
+            <div class="moreactions">
+                <button class="aktualisieren" type="submit">Aktualisieren</button>
+                <button class="schließen" type="button">Schließen</button>
+                <button class="löschen" type="button">Löschen</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <nav>
+            <a href="#" title="Impressum (Platzhalter)">Impressum</a>
+            <span aria-hidden="true">•</span>
+            <a href="https://www.htw-berlin.de/datenschutz/"
+                title="Datenschutzerklärung (Platzhalter)">Datenschutzerklärung</a>
+        </nav>
+    </footer>
+
+</body>
+
+</html>

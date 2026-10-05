@@ -1,0 +1,243 @@
+/* === Grundlayout === */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  background: #fdfcf8;           
+  color: #333;
+}
+
+/* === Header === */
+header {
+  background-color: #a7d7a2;     
+  color: #1c3d1a;                
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+/* === Login / Logout Buttons === */
+button.login,
+button.logout {
+  background-color: #e5f3e3;
+  border: 1px solid #7ebf72;
+  color: #1c3d1a;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button.login:hover,
+button.logout:hover {
+  background-color: #cdeac0;
+}
+
+form {
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+
+.welcome {
+  margin: 2rem;
+  font-size: 1.1rem;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+section h2 {
+  margin-left: 2rem;
+}
+
+/* === Location - Liste === */
+.locations {
+  list-style-type: none;
+  padding: 0 2rem;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.location {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.location summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #2a5522;
+}
+.location summary::-webkit-details-marker {
+  display: none;
+}
+
+.location p {
+  margin: 0.4rem 0;
+}
+
+/* == Locations und Map Ratios == */
+#main-layout {
+  display: flex;
+  gap: 1rem;
+  height: 80vh; 
+}
+
+#list-container {
+  width: 33%;        
+  overflow-y: auto;  /* Scrollbar*/ 
+}
+
+#map {
+  width: 67%;       
+  height: 100%;     
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+/* == Inputfelder == */
+input[type=text] {
+  font-family: 'Segoe UI', Arial, sans-serif
+}
+
+.loginform input[type=text],
+.loginform input[type=password],
+.addform input[type=text],
+.detailsform input[type=text] {
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+/* === Button-Layout === */
+.moreactions {
+  display: flex;
+  gap: 0.8rem;
+  margin: 2rem;
+}
+.actions {
+  display: flex;
+  gap: 0.8rem;
+  margin: 2rem;
+}
+
+.moreactions button {
+  padding: 0.7rem 1.1rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.actions button {
+  display: flex;
+  padding: 0.7rem 1.1rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* === Farb-Styles über Klassen === */
+button.add,
+button.aktualisieren,
+button.speichern {
+  background-color: #d5f0d0;
+  border-color: #b4e1a8;
+}
+button.aktualisieren:hover,
+button.speichern:hover {
+  background-color: #bfe6b5;
+}
+
+button.abbrechen {
+  background-color: #f8ecc9;
+  border-color: #f1dd94;
+}
+button.abbrechen:hover {
+  background-color: #f6e2a1;
+}
+
+button.löschen {
+  background-color: #e3b9ab;
+  border-color: #e89e86;
+}
+button.löschen:hover {
+  background-color: #e89e86;
+}
+
+/* === Footer === */
+footer {
+  background-color: #f0f0f0;
+  border-top: 1px solid #eee;
+  text-align: center;
+  padding: 1rem;
+  color: #666;
+}
+footer a {
+  color: #2a5522;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+  body {
+    padding: 0 1rem;
+  }
+
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  section h2 {
+    font-size: 1.2rem;
+    margin-left: 1rem;
+  }
+
+  .welcome {
+    font-size: 1rem;
+  }
+
+  form input[type=text],
+  form input[type=password],
+  form textarea {
+    width: clamp(300px, 60vw, 500px);
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+
+
+  form {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .actions,
+  .moreactions,
+  .add-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .locations {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+
+  div.hide {
+    display: none;
+  }
+}
